@@ -1,4 +1,4 @@
-name: Primeiro Pipeline
+name: Verificacao Automatica
 
 on:
   push:
@@ -8,5 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Executar mensagem
-        run: echo "Pipeline executado com sucesso"
+      - name: Baixar arquivos do projeto
+        uses: actions/checkout@v4
+
+      - name: Verificar arquivo
+        run: test -f aula-actions.txt
+
+      - name: Finalizar
+        run: echo "Arquivo encontrado - verificacao concluida"
